@@ -162,3 +162,27 @@ bitset bitset::union_with(const bitset &other) const {
 
 	return result;
 }
+
+bitset bitset::intersection(const bitset &other) const {
+	size_t intersection_capacity = std::min(this->capacity_, other.capacity_);
+
+	if (intersection_capacity == 0) {
+		return bitset{};
+	}
+	bitset result(intersection_capacity);
+
+
+	size_t first_blocks = blocks_needed(this->capacity_);
+	size_t second_blocks = blocks_needed(other.capacity_);
+	size_t min_blocks = std::min(first_blocks, second_blocks);
+
+	for (size_t i = 0; i < min_blocks; ++i) {
+		result.data_[i] = this->data_[i] & other.data_[i];
+	}
+
+	return result;
+}
+
+bool bitset::is_subset(const bitset &other) const {
+
+}

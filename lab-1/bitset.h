@@ -28,6 +28,8 @@ public:
 	void set(size_t k, bool b);
 
 	bitset union_with(const bitset& other) const;
+	bitset intersection(const bitset& other) const;
+	bool is_subset(const bitset& other) const;
 
 
 

@@ -83,6 +83,12 @@ build lab-1/CMakeFiles/task_1.dir/main.cpp.o: CXX_COMPILER__task_1_unscanned_Deb
   OBJECT_DIR = lab-1/CMakeFiles/task_1.dir
   OBJECT_FILE_DIR = lab-1/CMakeFiles/task_1.dir
 
+build lab-1/CMakeFiles/task_1.dir/bitset.cpp.o: CXX_COMPILER__task_1_unscanned_Debug /home/alxdrzd/alxdrzd/yadro-cpp-course/lab-1/bitset.cpp || cmake_object_order_depends_target_task_1
+  DEP_FILE = lab-1/CMakeFiles/task_1.dir/bitset.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = lab-1/CMakeFiles/task_1.dir
+  OBJECT_FILE_DIR = lab-1/CMakeFiles/task_1.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target task_1
@@ -91,7 +97,7 @@ build lab-1/CMakeFiles/task_1.dir/main.cpp.o: CXX_COMPILER__task_1_unscanned_Deb
 #############################################
 # Link the executable lab-1/task_1
 
-build lab-1/task_1: CXX_EXECUTABLE_LINKER__task_1_Debug lab-1/CMakeFiles/task_1.dir/main.cpp.o
+build lab-1/task_1: CXX_EXECUTABLE_LINKER__task_1_Debug lab-1/CMakeFiles/task_1.dir/main.cpp.o lab-1/CMakeFiles/task_1.dir/bitset.cpp.o
   FLAGS = -g
   OBJECT_DIR = lab-1/CMakeFiles/task_1.dir
   POST_BUILD = :

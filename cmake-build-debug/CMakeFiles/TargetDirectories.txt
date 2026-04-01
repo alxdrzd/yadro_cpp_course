@@ -1,0 +1,5 @@
+/home/alxdrzd/alxdrzd/yadro-cpp-course/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/alxdrzd/alxdrzd/yadro-cpp-course/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/alxdrzd/alxdrzd/yadro-cpp-course/cmake-build-debug/lab-1/CMakeFiles/task_1.dir
+/home/alxdrzd/alxdrzd/yadro-cpp-course/cmake-build-debug/lab-1/CMakeFiles/edit_cache.dir
+/home/alxdrzd/alxdrzd/yadro-cpp-course/cmake-build-debug/lab-1/CMakeFiles/rebuild_cache.dir

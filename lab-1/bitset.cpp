@@ -39,7 +39,7 @@ bitset &bitset::operator=(bitset &&other) noexcept {
 	return *this;
 }
 
-bitset &bitset::operator=(const bitset &other) {
+bitset &bitset::operator=(const bitset &other) noexcept {
 	if (this != &other) {
 		size_t blocks = blocks_needed(other.capacity_);
 		uint64_t *new_data = nullptr;
@@ -56,7 +56,7 @@ bitset &bitset::operator=(const bitset &other) {
 	return *this;
 }
 
-bitset::bitset(const bitset &other) : capacity_(other.capacity_) {
+bitset::bitset(const bitset &other) noexcept : capacity_(other.capacity_) {
 	size_t blocks = blocks_needed(capacity_);
 	if (blocks > 0) {
 		data_ = new uint64_t[blocks];
@@ -104,8 +104,6 @@ size_t bitset::size() const {
 	return this->capacity_;
 }
 
-bool bitset::empty() const {
-}
 
 void bitset::set(size_t k, bool b) {
 	size_t block_idx = k / BITS_PER_BLOCK;
@@ -137,6 +135,30 @@ void bitset::set(size_t k, bool b) {
 }
 
 bitset bitset::union_with(const bitset &other) const {
+	size_t union_capacity = std::max(this->capacity_, other.capacity_);
+
+	if (union_capacity == 0) {
+		return bitset{};
+	}
+	bitset result(union_capacity);
 
 
+
+	size_t first_blocks = blocks_needed(this->capacity_);
+	size_t second_blocks = blocks_needed(other.capacity_);
+	size_t min_blocks = std::min(first_blocks, second_blocks);
+	size_t union_blocks = blocks_needed(union_capacity);
+
+
+	for (size_t i = 0; i < min_blocks; ++i) {
+		result.data_[i] = this->data_[i] | other.data_[i];
+	}
+
+	if (first_blocks < second_blocks) {
+		std::copy(other.data_ + min_blocks, other.data_ + second_blocks, result.data_ + min_blocks);
+	} else if (first_blocks > second_blocks) {
+		std::copy(this->data_ + min_blocks, this->data_ + first_blocks, result.data_ + min_blocks);
+	}
+
+	return result;
 }

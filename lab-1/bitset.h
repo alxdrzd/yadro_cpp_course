@@ -23,7 +23,7 @@ public:
 	bool operator[](size_t k) const;
 	void clear();
 	size_t size() const;
-	bool empty() const;
+	//bool empty() const;
 
 	void set(size_t k, bool b);
 

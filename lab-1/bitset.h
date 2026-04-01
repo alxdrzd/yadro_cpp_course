@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <cstdint>
+#include <memory>
 
 
 class bitset {
@@ -17,13 +18,13 @@ public:
 	bitset& operator=(bitset&&) noexcept;
 	bitset& operator=(const bitset&) noexcept;
 	bitset(const bitset&) noexcept;
-	~bitset();
+	~bitset() = default;
 
 	bool test(size_t k) const;
 	bool operator[](size_t k) const;
 	void clear();
 	size_t size() const;
-	//bool empty() const;
+	bool empty() const;
 
 	void set(size_t k, bool b);
 
@@ -35,7 +36,7 @@ public:
 
 private:
 	static const size_t BITS_PER_BLOCK = 64;
-	uint64_t* data_;
+	std::unique_ptr<uint64_t[]> data_;
 	size_t capacity_;
 
 	static size_t blocks_needed(size_t);
